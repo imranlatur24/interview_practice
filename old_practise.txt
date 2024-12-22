@@ -1,0 +1,1181 @@
+INTERVIEW Q & A TECHNICAL
+
+
+
+def decor_fun(func):
+    def wrapper_fun():
+        print('wrapper')
+        return func()
+    print('decorator worked')
+    return wrapper_fun
+
+def show():
+    print('show')
+deco_show = decor_fun(show)
+deco_show()
+
+@decor_fun	
+def display():
+    print('display')
+    
+display()
+
+decorator worked
+wrapper
+show
+decorator worked
+wrapper
+display
+------------------------------------------------
+# parameretized decorator
+def add(x):
+    return x+1
+def sub(x):
+    return x-1
+    
+def operator(func,x):
+    temp = func(x)
+    return temp
+    
+print(operator(add,10))
+print(operator(sub,10))
+
+
+11
+9
+>
+------------------------------------------
+
+
+
+
+#[item for iterm in iterable if conditional]
+
+#listc = [i for i in range(10) if i%2==0]
+#print(listc)
+
+# mylist = []
+# for i in range(10):
+# if i%2==0:
+# mylist.append(i)
+# print(mylist)
+
+#[key:value for key,value in iterable if conditional]
+
+# dtc = {k:k*k for k in range(1,10)}
+# print(dtc)
+
+
+
+#[item for iterm in iterable if conditional]
+
+#listc = [i for i in range(10) if i%2==0]
+#print(listc)
+
+# mylist = []
+# for i in range(10):
+# if i%2==0:
+# mylist.append(i)
+# print(mylist)
+
+#[key:value for key,value in iterable if conditional]
+
+# dtc = {k:k*k for k in range(1,10)}
+# print(dtc)
+
+-------------------------------------------
+
+class P:
+    def __init__(self,name):
+        self.name=name
+    def show(self):
+        print(f'my name is {self.name}')
+p = P("imran")
+p.show()
+
+my name is imran
+
+
+
+------------------------------
+
+
+
+
+
+
+my_i = iter([1,2,3])
+print("using iter function")
+print(next(my_i))
+print(next(my_i))
+print(next(my_i))
+
+def sqrt(n):
+    for i in range(1,n+1):
+     yield i*i
+print("using yeild keyword")
+a= sqrt(3)
+print(next(a))
+print(next(a))
+print(next(a))
+-----------------------
+using iter function
+1
+2
+3
+using yeild keyword
+1
+4
+9
+>
+------------------------------
+
+
+
+# ternory operator
+# [if true] [if expression] [else] [if false]
+
+age=55
+discount = "u r eligible " if age>=50 else "not eligible"
+print(discount)
+
+u r eligible
+--------------------------
+
+class A:
+    def a(self):
+        print('a called')
+class B(A):
+    def a(self):
+        print('b called')
+    
+b=B()
+b.a()
+b.b()
+
+a called
+b called
+>
+
+------------------------
+
+
+a=10
+def local():
+    global a
+    print(a)
+    a=20
+    print('a ',a)
+local()
+
+10
+a 20
+>
+
+-------------------------------
+
+LEGB
+
+from math import pi
+
+# pi='global'
+def outer():
+    # pi='enclose'
+    def inner():
+        # pi='inner'
+        print(pi)
+    inner()
+outer()
+
+3.141592653589793
+
+----------------------------
+
+print("break stmt called")
+for i in range(10):
+    if i==5:
+        break
+    print(i)
+print('---------------')
+
+print("continue stmt called")
+for i in range(10):
+    if i==5:
+        continue
+    print(i)
+print('---------------')
+
+def myfun():
+    print('pass calling')
+    pass
+myfun()
+-------------------------------
+
+break stmt called
+0
+1
+2
+3
+4
+---------------
+continue stmt called
+0
+1
+2
+3
+4
+6
+7
+8
+9
+---------------
+pass calling
+--------------------------------------------
+
+
+import pickle
+
+d = {1:'imran',2:'irfan'}
+f = open('mytext.txt','wb')
+pickle.dump(d,f)
+f.close()
+
+f = open('mytext.txt','rb')
+c= pickle.load(f)
+print(c)
+f.close()
+
+
+---------------------
+
+
+
+import pickle
+d = {1:'imran',2:'irfan'}
+seri = pickle.dumps(d)
+print('seri ',seri)
+
+deseri = pickle.loads(seri)
+print('deseri ',deseri)
+
+b'\x80\x04\x95\x18\x00\x00\x00\x00\x00\x00\x00}\x94(K\x01\x8c\x04immi\x94K\x02\x8c\x05simmi\x94u.'
+====
+{1: 'immi', 2: 'simmi'}
+>
+
+
+--------------------------
+
+class A:
+    def abc(self):
+        print('a called')
+class B(A):
+    def abc(self):
+        print('b called')
+class C(A):
+    def abc(self):
+        print('c called')
+class D(B,C):
+    pass
+
+d = D()
+d.abc()
+
+ans:
+          b called
+-------------------------------------
+
+l = list()
+t = tuple()
+s = set()
+d = {}
+print(type(l))
+print(type(t))
+print(type(s))
+print(type(d))
+
+<class 'list'>
+<class 'tuple'>
+<class 'set'>
+<class 'dict'>
+>
+------------------------------------------
+l=[[0,1],[3,4]]
+iimport copy
+
+l1 = [[1,2],[3,4]]
+dp = copy.deepcopy(l1)
+dp[0][0] = 45
+print(dp)
+print(l1)
+print('----------------')
+l2 = [[1,2],[3,4]]
+cp = copy.copy(l2)
+cp[0][0] = 45
+print(cp)
+print(l2)
+
+[[45, 2], [3, 4]]
+[[1, 2], [3, 4]]
+----------------
+[[45, 2], [3, 4]]
+[[45, 2], [3, 4]]
+>
+------------------------
+
+s='hello world'
+print(s[2:5])
+
+print(s[6:11])
+
+print(s[0:5])
+
+print(s[::1])
+
+
+llo
+world
+hello
+hello world
+>--------------------
+
+fruits = ['apple','banana','anjeer']
+filter_obj = filter(lambda s:s[0]=='a',fruits)
+print(list(filter_obj))
+
+sqr = lambda a:a*a
+print(sqr(5))
+
+map_obj = map(lambda s:s[0]=='a',fruits)
+print(list(map_obj))
+
+['apple', 'anjeer']
+25
+[True, False, True]
+14
+---------------------------------
+
+
+
+mylist = [1,2,3,4,5]
+from functools import reduce
+add = reduce(lambda x,y:x+y,mylist)
+print(add)
+15
+
+
+> ----------------------------------
+
+# using normal function calculate square
+mylist = [1,2,3,4,5]
+sqr_list =[]
+for x in mylist:
+    i = x*x
+    sqr_list.append(i)
+print(sqr_list)
+
+# using list comprehenstion calculate square
+myex = [i*i for i in mylist]
+print(myex)
+
+# using lambda function calculate square
+a = lambda x:x*x
+mye = [a(i) for i in mylist]
+print('mye ',mye)
+
+[1, 4, 9, 16, 25]
+[1, 4, 9, 16, 25]
+mye [1, 4, 9, 16, 25]
+>
+---------------------------------
+
+
+mlist =[[1,2],[3,4,5],[6,7,8]]
+#print(mlist[1][2])
+
+print(mlist[2][2])
+print(mlist.insert(1,[10,11,12]))
+print(mlist)
+for x in mlist:
+    for i in x:
+        print(i,end=' ')
+    print()
+
+
+
+
+8
+None
+[[1, 2], [10, 11, 12], [3, 4, 5], [6, 7, 8]]
+1 2
+10 11 12
+3 4 5
+6 7 8
+>
+
+-----------------------------------------------
+
+expected output
+     [1, 4, 9, 16, 25, 36, 49]
+
+numbers = [1, 2, 3, 4, 5, 6, 7]
+mycomp = [i*i for i in numbers]
+print(mycomp)
+
+[1, 4, 9, 16, 25, 36, 49]
+
+------------------------------------
+expected output
+['Hello Dear', 'Hello Sir', 'take Dear', 'take Sir']
+
+list1 = ["Hello ", "take "]
+list2 = ["Dear", "Care"]
+
+list_comp = [x+y for x in list1 for y in list2]
+print(list_comp)
+------------------------------------
+ expected output
+10 100
+20 200
+30 300
+40 400
+>
+list1 = [10, 20, 30, 40]
+list2 = [100, 200, 300, 400]
+
+for x,y in zip(list1,list2):
+    print(x,y)
+---------------------------------------
+expected output
+   ['Mike', 'Emma', 'Kelly', 'Brad']
+
+list1 = ["Mike", "", "Emma", "Kelly", "", "Brad"]
+res = list(filter(None,list1))
+print(res)
+-------------------------------------
+
+
+
+
+
+expected output
+   [5, 10, 15, 200, 25, 50, 20]
+
+list1 = [5, 10, 15, 20, 25, 50, 20]
+index = list1.index(20)
+list1[index]=200
+print(list1)
+-------------------------------
+expected output
+     [5, 10, 15, 25, 50]
+
+
+list1 = [5, 10, 15, 20, 25, 50, 20]
+while 20 in list1:
+    list1.remove(20)
+print(list1)
+
+----------------------------
+
+Functions:
+
+def info(name,age):
+    print(f'my name is {name} and my age {age}')
+name='imran'
+age=29
+info(name,age)
+
+my name is imran and my age 29
+--------------------------
+
+def func1(*agrs):
+    print('Printing values')
+    for i in agrs:
+        print(i)
+# call function with 3 arguments
+func1(20, 40, 60)
+
+# call function with 2 arguments
+func1(80, 100)
+
+printing values
+20
+40
+60
+
+
+Printing values
+80
+100
+-----------------------------
+
+def calculation(a, b):
+    # Your Code
+    add = a+b
+    sub = a-b
+    return add, sub
+res = calculation(40, 10)
+print(res)
+
+Expected Output
+50,30
+------------------
+
+def showEmployee(name,sal=9000):
+        return "Name:",name+ " salary: ",sal
+print(showEmployee("Ben", 12000))
+print(showEmployee("Jessa"))
+
+Expected Output
+('Name:', 'Ben salary: ', 12000)
+('Name:', 'Jessa salary: ', 9000)
+------------------------------
+def outer(a,b):
+    def inner(a,b):
+        return a+b
+    add = inner(a,b)
+    return add+5
+    
+print(outer(1,2))
+
+expected output
+    8
+-------------------------
+def addition(num):
+    if num:
+        print(num)
+        # call same function by reducing number by 1
+        return num + addition(num - 1)
+    else:
+        return 0
+
+res = addition(10)
+print(res)
+expected output
+    55
+-------------------------
+
+Below is the function display_student(name, age). Assign a new name show_tudent(name, age) to it and call it using the new name.
+
+def display_student(name, age):
+    print(name, age)
+show_student = display_student
+
+show_student("iMRAAN", 26)
+
+expected output
+iMRAAN 26
+--------------------------------------------
+
+
+
+
+
+str = 'imran'
+res = str[0] # i
+l = len(str) # get total lenght of string value
+mi = int(l/2) # get middle no
+res = res + str[mi] # str[mi] get middle string value
+res = res + str[l-1] # str[l-1] get last character
+print('last ',str[l-1])
+print('output ',res)
+
+last n
+output irn
+-------------------------------
+Exercise 3: Create a new string made of the first, middle, and last characters of each input string
+
+def fml(str):
+    f = str[0]
+    lent = len(str)
+    m = int(lent/2)
+    mid = str[m]
+    last = str[lent-1]
+    fml = f+mid+last
+    return fml
+    
+name = "imran"
+print(fml(name))
+name = "vinayak"
+print(fml(name))
+
+result:
+ irn
+ vak
+-----------------------
+
+# Arrange string characters such that lowercase letters should come first
+
+str = 'ImraN'
+lower = []
+upper = []
+for char in str:
+    if char.islower():
+        lower.append(char)
+    else:
+        upper.append(char)
+got_result = ''.join(lower+upper)
+print(got_result)
+result
+ mraIN
+-------------------------
+
+# Count all letters, digits, and special symbols from a given string
+
+name = 'ImraN@123'
+alpha = 0
+digit = 0
+sym = 0
+for str in name:
+    if str.isalpha():
+        alpha+=1
+    elif str.isdigit():
+        digit+=1
+    else:
+        sym+=1
+print('alphabets ',alpha)
+print('disit ',digit)
+print('symbols ',sym)
+ result :
+ alphabets 5
+ digit 3
+ symbols 1
+----------------------------
+s1 = "Abc"
+s2 = "Xyz"
+
+
+f = s1[0]
+lenth = len(s2)
+last = s2[lenth-1]
+s3= f + last
+f = s1[1]
+last = s2[lenth-2]
+s4= f + last
+f = s1[2]
+last = s2[lenth-3]
+s5= f + last
+print(s3+s4+s5)
+
+results
+ AzbycX
+------------------------------------------------
+
+
+
+
+
+
+
+
+
+isdig =[]
+
+def myfun(str1):
+   for str in str1:
+        if str.isdigit():
+            isdig.append(str)
+        else:
+            pass
+
+str1 = "PYnative29@#8496"
+myfun(str1)
+print(isdig)
+sumt = 0
+for i in isdig:
+    sumt=sumt + int(i)
+print("sum ",sumt)
+----------------------------------------------
+['2', '9', '8', '4', '9', '6']
+sum 38
+--------------------------------------
+TUPLE
+# swap tuple
+tuple1 = (11, 22)
+tuple2 = (99, 88)
+tuple1,tuple2 = tuple2,tuple1
+print(tuple1)
+print(tuple2)
+result
+         (99, 88)
+         (11, 22)
+
+
+Unpack the tuple into 4 variables
+ 
+a,b=tuple1
+tuple2=tuple1
+b,a=tuple2
+print(a)
+print(b)
+
+result
+ 20
+ 10
+-------------------------
+
+Access value 20 from the tuple
+
+tuple1 = ("Orange", [10, 20, 30], (5, 15, 25))
+a,b,c = tuple1
+print(a)
+print(b)
+print(c)
+
+Orange
+[10, 20, 30]
+(5, 15, 25)
+-----------------------------------------
+
+
+Access value 20 from the tuple
+
+tuple1 = ("Orange", [10, 20, 30], (5, 15, 25))
+# understand indexing # tuple1[0] = 'Orange' # tuple1[1] = [10, 20, 30] # list1[1][1] = 20
+print(tuple1[1][1]) # 20
+result :
+   20
+
+Create a tuple with single item 50
+Tuple_1 = (50,)
+print(type(Tuple_1))
+result :
+    class type : tuple
+-----------------------------
+
+#swap tuple
+tuple1=(11,99)
+tuple2=(88,44)
+
+tuple2,tuple1 = tuple1,tuple2
+print(tuple1)
+print(tuple2)
+
+result:
+    (88, 44)
+    (11, 99)
+-----------------------------------
+
+
+# Copy specific elements from one tuple to a new tuple
+tuple1 = (11, 22, 33, 44, 55, 66)
+tuple2=tuple1[3:-1]
+print(tuple2)
+
+result :
+   (44, 55)
+-----------------------------------------
+# Modify the tuple
+# Modify the tuple
+tuple1 = (11, [22, 33], 44, 55)
+tuple1[1][0]=222
+print(tuple1)
+result :
+  (11, [222, 33], 44, 55)
+--------------------------------------
+# Sort a tuple of tuples by 2nd item
+tuple1 = (('a', 23), ('b', 37), ('c', 11), ('d', 29))
+result = sorted(list(tuple1),key=lambda x:x[1])
+print(result)
+result :
+   [('c', 11), ('a', 23), ('d', 29), ('b', 37)]
+
+--------------------------------------
+
+# Counts the number of occurrences of item 50 from a tuple
+tuple1 = (50, 10, 60, 70, 50)
+temp=0
+for i in tuple1:
+    if i==50:
+        temp+=1
+    else:
+        pass
+print(temp)
+
+result :
+ 2
+----------------------------------------------------
+# Check if all items in the tuple are the same
+def myfun(t):
+    return all(i==t[0] for i in t)
+
+tuple1 = (45, 45, 45, 45)
+print(myfun(tuple1))
+result :
+ True
+---------------------------------------
+SET
+# Add a list of elements to a set
+sample_set = {"Yellow", "Orange", "Black"}
+sample_list = ["Blue", "Green", "Red"]
+
+sample_set.update(sample_list)
+print(sample_set)
+result
+{'Red', 'Blue', 'Orange', 'Yellow', 'Black', 'Green'}
+
+
+# Return a new set of identical items from two sets
+set1 = {10, 20, 30, 40, 50}
+set2 = {30, 40, 50, 60, 70}
+set1 = set1.intersection(set2)
+print('same values get by intersection')
+print(set1)
+
+same values get by intersection
+{40, 50, 30}
+-----------------------------------------------------------
+
+# Get Only unique items from two sets
+set1 = {10, 20, 30, 40, 50}
+set2 = {30, 40, 50, 60, 70}
+set1 = set1.union(set2)
+print('different values get by intersection')
+print(set1)
+
+result :
+  different values get by intersection
+{70, 40, 10, 50, 20, 60, 30}
+----------------------------------------------------
+# Update the first set with items that don’t exist in the second set
+
+set1 = {10, 20, 30}
+set2 = {20, 40, 50}
+set1.difference_update(set2)
+print(set1)
+result :
+   {10, 30}
+----------------------------------------
+# Remove items from the set at once
+set1 = {10, 20, 30, 40, 50}
+set1.difference_update({10,20,30})
+print(set1)
+
+result :
+    {50, 40}
+----------------------------------
+
+# Creating a set which have immutable elements
+set1 = {1,2,3, "JavaTpoint", 20.5, 14}
+print(type(set1))
+#Creating a set which have mutable element
+set2 = {1,2,3}
+set2.update(["Javatpoint",4])
+# for single add element to set we use add() function
+# for multiple add elements to set we use update() function
+# for add single set element it is also we use update with {} curly braces value
+set2.update({'imran'})
+print(set2)
+
+result
+   <class 'set'>
+{1, 2, 3, 4, 'imran', 'Javatpoint'}
+-----------------------------------------------------------
+
+
+# set operations
+set1={1,2,3}
+set2={2,3,4,5,6,7}
+set1.intersection(set2)
+print('common ',set1)
+set1.symmetric_difference(set2)
+print('symmetric diff, ',set1)
+
+print('difference ',set1^set2) # difference
+print('union ',set1|set2) # union
+print('intersection ',set1&set2) # intersection
+----------------------------
+
+# dictionary
+# dictinoary operations
+import copy
+d = {1:'imran',2:'irfan'}
+print(d)
+print('keys ',d.keys())
+print('values ',d.values())
+print('items ',d.items())
+
+myd = {}
+myd = copy.copy(d)
+print(myd)
+
+d.clear()
+print('clear dict ',d)
+print(myd)
+
+myd.update({2:'muskan'})
+print('update by key ',myd)
+
+myd.pop(2)
+print('pop ',myd)
+
+print(d)
+hask = myd.popitem()
+print('popitem ',hask)
+
+print(myd)
+get_itm = myd.get(1)
+print('get item ',get_itm)
+
+results :
+
+{1: 'imran', 2: 'irfan'}
+keys dict_keys([1, 2])
+values dict_values(['imran', 'irfan'])
+items dict_items([(1, 'imran'), (2, 'irfan')])
+{1: 'imran', 2: 'irfan'}
+clear dict {}
+{1: 'imran', 2: 'irfan'}
+update by key {1: 'imran', 2: 'muskan'}
+pop {1: 'imran'}
+{}
+popitem (1, 'imran')
+{}
+get item None
+
+-------------------------------------
+
+my_list = [
+    [35, 66, 31],
+    ["python", 13, "is"],
+    [15, "fun", 14]]
+str_lst=[]
+str_lst.append(my_list[1][0])
+str_lst.append(my_list[1][2])
+str_lst.append(my_list[2][1])
+
+print(str(str_lst))
+result :
+  ['python', 'is', 'fun']
+
+--------------------------------------------------
+
+# even first then odd
+li = [4,5,6,7,2,3,11,13]
+even_l = []
+odd_l=[]
+for i in li:
+    if i%2==0:
+        even_l.append(i)
+    else:
+        odd_l.append(i)
+print(even_l+odd_l)
+     result:
+[4, 6, 2, 5, 7, 3, 11, 13]
+
+------------------------------------
+
+# factorial program
+num=5
+fact=1
+if num<=0:
+    print('enter positive no ')
+elif num==1:
+    print('factorial of 1 is 1 ')
+else:
+    print('worked')
+    for i in range(1,num+1):
+        fact = fact * i
+print(f'factorial of {num} is {fact}')
+
+result :
+  worked
+factorial of 5 is 120
+------------------------------------------
+
+# factorial using recursion
+def fact(x):
+    if x==1:
+        return 1
+    else:
+        return x * fact(x-1)
+
+num=5
+result = fact(num)
+print(f'fact of {num} is {result}')
+
+result:
+   fact of 5 is 120
+>------------------
+
+# Python program to find the largest number among the three input numbers
+
+a,b,c=1,20,3
+largest = ''
+if (a>b) and (a>c):
+    largest = a
+elif (b>a) and (b>c):
+    largest = b
+else:
+    largest = c
+print(f'largest value is {largest}')
+result
+   largest value is 20
+
+
+
+# leap year
+year = 1900
+
+if (year%400==0) and (year%100==0):
+    print(f'{year} this is leap year')
+elif (year%4==0) and (year%100!=0):
+    print(f'{year} this is leap year')
+else:
+    print(f'{year} not leap year')
+
+result :
+  1900 not leap year
+------------------------------------
+# display table
+
+num=12
+for i in range(1,11):
+    print(num,' x ',i,' = ',num*i)
+  
+result :
+12 x 1 = 12
+12 x 2 = 24
+12 x 3 = 36
+12 x 4 = 48
+12 x 5 = 60
+12 x 6 = 72
+12 x 7 = 84
+12 x 8 = 96
+12 x 9 = 108
+12 x 10 = 120
+  -----------------------------
+
+
+
+# positive or negative
+num=-1
+if num<0:
+    print('no is negative')
+else:
+    print('no is positive')
+---------------------------------
+
+# remove duplicates from list
+list1 = [1,2,3,1,2]
+print(list(set(list1)))
+result:
+  [1, 2, 3]
+---------------------------
+# remove duplicates from two lists
+list1 = [1,2,3]
+list2 = [4,5,6,1,2,3]
+print(list(set(list1) ^ (set(list2))))
+result:
+  [4, 5, 6]
+-----------------------
+
+
+
+
+
+
+
+
+
+# fibonacci series
+n=6
+count,n1,n2=0,0,1
+while count<=n:
+    print(n1)
+    temp=n1+n2
+    n1=n2
+    n2=temp
+    count+=1
+results :
+ 0
+1
+1
+2
+3
+5
+8
+--------------------------
+l1=['my','is']
+l2=['name','imran']
+
+lc = [x+y for x,y in zip(l1,l2)]
+str = " ".join(lc)
+print(str)
+
+results:
+  myname isimran
+
+1.which model they used
+2. flask tensorflow,opencv,
+
+इmरaan
+from functools import reduce
+def myfun(lst):
+    if not lst:
+        return []
+    return [lst[-1]] + myfun(lst[:-1])
+lst =[1,2,3]
+print(myfun(lst))
+
+---------------------------------------
+SERIALIZERS
+models.py
+from django import models
+class StudentModel(models.Model):
+  name = models.CharField(max_length=15)
+
+serializers.py
+from rest_framework import serializers
+class StudentModel(serializers.Serializer):
+  name = models.CharField(max_length=15)
+
+admin.py
+from .models import StudentModel
+@admin.register(StudentModel)
+class StudentAdmin(admin.ModelAdmin):
+   list_display = [‘id’,’name’]
+
+views.py
+from .serializers import StudentSerializers
+from .models import StudentModel
+from restframework.renderers import JsonRenderer
+from django.http import HttpResponse
+def get(request):
+  std_all = StudentModel.objects.all()
+    serializers = StudentSerializers(std_all,many=True)
+    json_data = JsonRenderer().render(serializers.data)
+   return HttpResponse(request,json_data,content_type=”application/json”)
+urls.py
+from myapp import views
+
+path[(‘get/’,views.get)
+]
+
+DESERIALIZATION
+serializers.py
+from rest_framework import serializers
+from .models import StudentModel
+class StudentModel(serializers.Serializer):
+  name = models.CharField(max_length=15)
+  
+ def create(self,validated_data):
+     return StudentModel.objects.create(**validated_data)
+
+views.py
+from .serializers import StudentSerializers
+from .models import StudentModel
+from restframework.renderers import JsonRenderer
+from django.http import HttpResponse
+from restframework.parsers import JsonParserer
+import io
+from django.contrib.views.decorator.csrf import csrf_exempt
+
+@csrf_exempt
+def desi(request):
+  if request.method == “POST”:
+     json_data = request.body
+     stream = io.BytesIO(json_data)
+     python_data = JsonParserer().parse(stream)
+     serializers = StudentSerializers(serializers.data)
+     if serialize
